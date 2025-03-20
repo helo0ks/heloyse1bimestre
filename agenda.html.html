@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Agenda</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Doto", sans-serif;  
+            background-color: #f2b9da; 
+        }
+         h1, label, input {
+            margin-bottom: 12px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #841554;
+        }
+
+        input[type="text"], input[type="date"] {
+            padding: 5px;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        input[type="button"] {
+            font-family: "Doto", sans-serif;
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color:#030000;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;  
+            color: black;
+        }
+
+        #aviso {
+            color: rgb(173, 40, 98);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: "Doto", sans-serif;
+            font-size: 32px; 
+            font-weight: bold; 
+            color: #ae155c;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Agenda Digital</h1>
+
+    <label for="inputID">Digite um ID:</label>
+    <input type="text" name="inputID" id="inputID">
+    <input type="button" value="Procurar" id="procurar" onclick="procurar()" style="display:inline;">
+    <br><br>
+
+    <label for="inputmateria">Matéria:</label>
+    <input type="text" name="inputmateria" id="inputmateria">
+    <br>
+    <label for="inputprofessor">Professor:</label>
+    <input type="text" name="inputprofessor" id="inputprofessor">
+    <br>
+    <label for="inputatividade">Atividade:</label>
+    <input type="text" name="inputatividade" id="inputatividade">
+    <br>
+    <label for="inputentrega">Data final:</label>
+    <input type="date" name="inputentrega" id="inputentrega">
+    <br><br>
+
+    <div id="aviso"></div>
+    <input type="button" value="Inserir" id="inserir" onclick="inserir()" style="display:none;">
+    <input type="button" value="Alterar" id="alterar" onclick="alterar()" style="display:none;">
+    <input type="button" value="Excluir" id="excluir" onclick="excluir()" style="display:none;">
+    <input type="button" value="Excluir todas as atividades" id="excluirtudo" onclick="excluirtudo()" style="display:none;">
+    <input type="button" value="Salvar" id="salvar" onclick="salvar()" style="display:none;">
+    <input type="button" value="Cancelar" id="cancelar" onclick="cancelar()" style="display:none;">
+
+    <br><br>
+
+    <div id="output"></div>
+    <script src="./agenda.js"></script>
+    <script src="./agendacontrole.js"></script>
+</body>
+</html>
