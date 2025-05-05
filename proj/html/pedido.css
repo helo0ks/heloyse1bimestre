@@ -1,0 +1,169 @@
+/* Reset de margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte padrão */
+body {
+  font-family: 'Doto', sans-serif; /* Apliquei a fonte que você solicitou */
+  background-image: url("fundo.png"); /* Fundo geral para a página */
+  background-size: cover;
+  color: #333;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 40px;
+  background-color: rgba(255, 0, 0, 0.8); /* Fundo vermelho com leve transparência */
+  color: white;
+  border-radius: 0 0 30px 30px; /* Acabamento arredondado na parte inferior */
+}
+
+/* Títulos do Header */
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+header h2 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+/* Container dos cards de sabores */
+#cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Card individual para cada sabor */
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #d9534f; /* Cor vermelha para o nome da pizza */
+}
+
+.card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.card button {
+  background-color: #d9534f; /* Cor do botão */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 30px; /* Acabamento arredondado */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card button:hover {
+  background-color: #c9302c; /* Cor do botão ao passar o mouse */
+}
+
+/* Lista de sabores selecionados */
+#lista-sabores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#lista-sabores li {
+  background-color: #fff;
+  padding: 15px;
+  width: 80%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #333;
+}
+
+#lista-sabores li button {
+  background-color: #f0ad4e; /* Cor laranja para o botão de remover */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#lista-sabores li button:hover {
+  background-color: #ec971f; /* Cor mais escura quando o mouse passa */
+}
+
+/* Botões de navegação */
+#buttons {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#buttons button {
+  background-color: #5bc0de; /* Cor azul clara para o botão */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#buttons button:hover {
+  background-color: #31b0d5; /* Cor mais escura ao passar o mouse */
+}
+
+/* Botão de "Finalizar Pedido" */
+#finalizar-pedido:disabled {
+  background-color: #d9534f; /* Botão desabilitado com a cor vermelha */
+  cursor: not-allowed;
+}
+
+/* Estilo do botão "Adicionar mais itens" */
+#add-more-items {
+  background-color: #5bc0de;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#add-more-items:hover {
+  background-color: #31b0d5;
+}
+

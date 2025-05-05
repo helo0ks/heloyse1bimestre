@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação do Pedido</title>
+  <link rel="stylesheet" href="confirmacao.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Confirmação do Pedido</h1>
+    <div class="pedido-detalhes" id="pedido-detalhes"></div>
+
+    <h2>Escolha o método de pagamento:</h2>
+    <div class="pagamento-opcoes">
+      <button onclick="mostrarPagamento('pix')">PIX</button>
+      <button onclick="mostrarPagamento('credito')">Cartão de Crédito</button>
+      <button onclick="mostrarPagamento('debito')">Cartão de Débito</button>
+    </div>
+
+    <div id="area-pagamento"></div>
+
+    <div id="confirmacao-final" style="display:none">
+      <h3>Pedido Confirmado!</h3>
+      <p id="codigo-pedido"></p>
+      <p>Obrigado por pedir conosco!</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="confirmacao.js"></script>
+</body>
+</html>

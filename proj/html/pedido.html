@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido - 754 Pizzaria</title>
+    <link rel="stylesheet" href="pedido.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Escolha seus sabores</h1>
+        <h2>Selecione até 2 sabores para pizzas grandes ou médias, e até 1 para pizzas broto.</h2>
+    </header>
+
+    <!-- Container de Sabores -->
+    <section id="cards-container">
+        <div class="card" id="card-atum">
+            <h3>Pizza de Atum</h3>
+            <p>Atum, cebola e azeitonas</p>
+            <button onclick="adicionarSabor('Atum')">Adicionar</button>
+        </div>
+        <div class="card" id="card-frango">
+            <h3>Pizza de Frango com Cheddar</h3>
+            <p>Frango desfiado, cheddar e azeitonas</p>
+            <button onclick="adicionarSabor('Frango com Cheddar')">Adicionar</button>
+        </div>
+        <div class="card" id="card-portuguesa">
+            <h3>Pizza Portuguesa</h3>
+            <p>Presunto, ovo, azeitonas e queijo</p>
+            <button onclick="adicionarSabor('Portuguesa')">Adicionar</button>
+        </div>
+        <div class="card" id="card-calabresa">
+            <h3>Pizza Calabresa</h3>
+            <p>Calabresa, cebola e queijo</p>
+            <button onclick="adicionarSabor('Calabresa')">Adicionar</button>
+        </div>
+        <div class="card" id="card-calabresa-especial">
+            <h3>Pizza Calabresa Especial</h3>
+            <p>Calabresa, cebola, pimentão e queijo</p>
+            <button onclick="adicionarSabor('Calabresa Especial')">Adicionar</button>
+        </div>
+        <div class="card" id="card-margueritta">
+            <h3>Pizza Margueritta</h3>
+            <p>Queijo, tomate e manjericão</p>
+            <button onclick="adicionarSabor('Margueritta')">Adicionar</button>
+        </div>
+        <div class="card" id="card-estrogonoff">
+            <h3>Pizza Estrogonoff de Carne</h3>
+            <p>Carne de boi, molho cremoso e queijo</p>
+            <button onclick="adicionarSabor('Estrogonoff de Carne')">Adicionar</button>
+        </div>
+    </section>
+
+    <!-- Lista de Sabores Selecionados -->
+    <section>
+    
+        <ul id="lista-sabores"></ul>
+    </section>
+
+    <!-- Botões para navegação -->
+    <section id="buttons">
+        <button onclick="voltar()">Adicionar mais itens</button>
+        <button id="finalizar-pedido" onclick="finalizarPedido()" disabled>Finalizar Pedido</button>
+    </section>
+
+    <script src="pedido.js"></script>
+</body>
+</html>
