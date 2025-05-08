@@ -1,0 +1,162 @@
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Ballet:opsz@16..72&family=Doto:wght@100..900&display=swap');
+
+/* Estilos Gerais para Ambas as Páginas */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #2c3e50;
+  line-height: 1.5;
+  padding: 20px;
+  backdrop-filter: brightness(0.1);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Doto', sans-serif; /* Fonte principal */
+  background-image: url('fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Apagado sobre a tela */
+  z-index: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Botões */
+.btn-start, .btn-size, .btn-pedido {
+  background-color: #b30000;
+  color: white;
+  font-size: 40px;
+  padding: 30px 80px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: 'Alumni Sans Pinstripe', sans-serif; /* Fonte de botões */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  transition: 0.3s ease all;
+}
+
+.btn-start:hover, .btn-size:hover, .btn-pedido:hover {
+  background-color: #8c0000;
+  transform: scale(1.05);
+}
+
+/* Página Principal (index.html) */
+.header {
+  height: 33vh;
+  background-color: rgba(139, 0, 0, 0.92); /* Cor vermelha */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Doto', sans-serif; /* Fonte aplicada ao título */
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.main-content {
+  height: 67vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Página Menu (menu.html) */
+.header {
+  height: 33vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(139, 0, 0, 0.95) 0%,
+    rgba(139, 0, 0, 0.9) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+
+.pizza-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Remover sobreposição de fundo */
+body.menu-body {
+  background-image: none;
+}
+
+.pizza-options .btn-size {
+  font-size: 32px;
+  padding: 25px 70px;
+  margin: 15px;
+}
+
+/* Página Pedido (pedido.html) */
+.pedido-header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(139, 0, 0, 0.9); /* Cor vermelha */
+  color: white;
+}
+
+.pedido-title {
+  font-family: 'Doto', sans-serif;
+  font-size: 50px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.pedido-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.pedido-options .btn-pedido {
+  font-size: 32px;
+  padding: 25px 70px;
+  margin: 15px;
+}
+
+/* Centralização de elementos */
+.menu-header, .header, .main-content, .pedido-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

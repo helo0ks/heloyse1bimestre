@@ -1,0 +1,306 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #2c3e50;
+  line-height: 1.5;
+  padding: 20px;
+  backdrop-filter: brightness(0.1);
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #c20000;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Seção de tamanho e preço */
+#tamanho-selecionado {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#tamanho-selecionado p {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Botões de tamanho da pizza */
+#tamanhos-pizza {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#tamanhos-pizza button {
+  background-color: #031b0d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#tamanhos-pizza button:hover {
+  background-color: #03200f;
+}
+
+/* Cards de pizza */
+#cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.card p {
+  margin: 4px 15px;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.card .preco {
+  font-weight: bold;
+  color: #ae2727;
+}
+
+.card button {
+  background-color: #5f0b0f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 15px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background-color: #d35400;
+}
+
+/* Lista de sabores */
+#sabores-selecionados {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#lista-sabores {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+#lista-sabores li {
+  background-color: #ecf0f1;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#lista-sabores button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#lista-sabores button:hover {
+  background-color: #a93226;
+}
+
+/* Seção de total */
+#total {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#total p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Botões principais */
+#buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#buttons button {
+  background-color: #031b0d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#buttons button:hover {
+  background-color: #03200f;
+}
+
+#finalizar-pedido:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Estilo para a comanda (resumo do pedido) */
+#pagamento {
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none; /* já está no JS, mas reafirma */
+}
+
+#pagamento h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+#pagamento p {
+  font-size: 1rem;
+  color: #555;
+  margin: 8px 0;
+}
+
+#pix-area {
+  margin-top: 15px;
+}
+
+#mensagem-cartao {
+  margin-top: 15px;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+/* Estilo para os botões da comanda */
+#pagamento button {
+  background-color: #031b0d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  margin: 10px 8px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#pagamento button:hover {
+  background-color: #03200f;
+}
+
+/* Aumentar letras da comanda */
+#pagamento p,
+#pagamento h3 {
+  font-size: 1.2rem;
+}
+
+/* Estilo e tamanho para área do Pix */
+#pix-area canvas {
+  margin-top: 10px;
+  width: 220px !important;
+  height: 220px !important;
+}
+
+/* Estilo para a tela de confirmação do pedido */
+#confirmacao {
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Textos da confirmação */
+#confirmacao p {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+/* Botão de voltar para tela inicial */
+#confirmacao button {
+  background-color: #031b0d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin-top: 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#confirmacao button:hover {
+  background-color: #03200f;
+}
