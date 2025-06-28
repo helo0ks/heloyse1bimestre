@@ -304,3 +304,189 @@ h2 {
 #confirmacao button:hover {
   background-color: #03200f;
 }
+
+/* Botões fixos no topo direito (carrinho e logout) */
+#botao-carrinho,
+#botao-logout {
+  background-color: #5f0b0f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+#botao-carrinho:hover,
+#botao-logout:hover {
+  background-color: #d35400;
+}
+
+/* Modal do carrinho - overlay */
+#carrinho-modal {
+  display: none; /* será exibido via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  /* centralizar conteúdo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Conteúdo do modal */
+#carrinho-modal > div {
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  padding: 20px 30px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Botão fechar modal */
+#fechar-carrinho {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #c0392b;
+  transition: color 0.3s;
+}
+
+#fechar-carrinho:hover {
+  color: #e74c3c;
+}
+
+/* Conteúdo do resumo do carrinho */
+#resumo-carrinho {
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-top: 40px;
+  white-space: pre-wrap; /* para quebra de linha caso tenha textos longos */
+}
+
+/* Para dispositivos menores ajustar largura dos cards e botões fixos */
+@media (max-width: 768px) {
+  #cards-container .card {
+    width: 45%;
+  }
+
+  #botao-carrinho,
+  #botao-logout {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  #cards-container .card {
+    width: 100%;
+  }
+}
+/* Modal do Carrinho */
+#carrinho-modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Conteúdo do Modal */
+#carrinho-modal > div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #2c3e50;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título do Carrinho */
+#carrinho-modal h2 {
+  margin-bottom: 20px;
+  color: #c20000;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Botão fechar (X) */
+#fechar-carrinho {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #c20000;
+  transition: color 0.3s;
+}
+#fechar-carrinho:hover {
+  color: #7a0000;
+}
+
+/* Lista de pizzas no carrinho */
+#resumo-carrinho ul {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+#resumo-carrinho ul li {
+  padding: 10px 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Total no carrinho */
+#resumo-carrinho p strong {
+  font-size: 1.2rem;
+  color: #ae2727;
+}
+
+/* Botões do carrinho: Finalizar e Cancelar */
+#carrinho-modal button {
+  background-color: #031b0d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin: 0 10px 10px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+}
+
+#carrinho-modal button:hover {
+  background-color: #03200f;
+}
+
+/* Botão desabilitado no carrinho */
+#carrinho-modal button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

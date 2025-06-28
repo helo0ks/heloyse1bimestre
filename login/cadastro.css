@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(./img/fundo.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    width: 420px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(38, 8, 8, 0.5);
+    border-radius: 10px;
+    color: black;
+    padding: 30px 40px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    backdrop-filter: blur(5px);
+}
+.container h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.input-box input,
+.input-box select {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border:2px solid rgba(255, 255, 255);
+    border-radius: 40px;
+    outline: none;
+    font-size: 16px;
+    color: rgb(64, 62, 62);
+    padding: 20px 45px 20px 20px;
+    appearance: none;
+}
+
+.input-box input::placeholder {
+    color:#9c9797;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.remember-forgot{
+    display: flex;
+    justify-content: center;
+    margin: -15px 0 15px;
+}
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 5px;
+}
+
+.login{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(126, 20, 20, 0.9);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin-top: 20px;
+}
+
+.login:hover {
+    background-color: transparent;
+    border: 2px solid  rgba(255, 255, 255, 0.9);
+}
+
+.register-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link a{
+    text-align: none;
+    color: #fff;
+    font-weight: 600;
+}
+.register-link a:hover{
+    text-decoration: underline;
+}
+
+/* Estilo para mensagens de erro */
+#mensagem {
+    font-size: 14px;
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}
+
+/* Estilização para select */
+.input-box select {
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    color: #333;
+    font-weight: 500;
+}

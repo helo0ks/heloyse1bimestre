@@ -1,4 +1,3 @@
-<!-- pedido.html atualizado -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,6 +10,12 @@
   <header>
     <h1>Escolha seus sabores</h1>
     <h2>Selecione até 2 sabores para pizzas grandes ou médias, e até 1 para pizzas broto.</h2>
+
+    <!-- Botões fixos no topo direito (sem modificar o layout do header) -->
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 1001; display: flex; gap: 8px;">
+      <button id="botao-carrinho" style="font-size: 16px; padding: 6px 10px; cursor: pointer;">🛒</button>
+      <button id="botao-logout" style="font-size: 16px; padding: 6px 10px; cursor: pointer;">Sair</button>
+    </div>
   </header>
 
   <section id="tamanho-selecionado">
@@ -95,14 +100,12 @@
     <h2>Sabores Selecionados</h2>
     <ul id="lista-sabores"></ul>
   </section>
-
-
   <section id="buttons">
-    <button id="adicionar-pizza" onclick="finalizePizza()" disabled>Adicionar Pizza ao Pedido</button>
-    <button id="finalizar-pedido" onclick="mostrarPagamento()" disabled>Finalizar Pedido</button>
-    <button id="cancelar-pedido" onclick="cancelarPedido()">Cancelar Pedido</button>
-  </section>
-  
+  <button id="adicionar-pizza" onclick="finalizePizza()" disabled>Adicionar Pizza ao Pedido</button>
+</section>
+
+
+  <!-- REMOVIDO: seção buttons original com os botões Finalizar Pedido e Cancelar Pedido -->
 
   <section id="pagamento">
     <h2>Resumo do Pedido</h2>
@@ -115,17 +118,63 @@
     <div id="pix-area"></div>
     <button onclick="pagarCartao()">Pagar com Cartão</button>
     <p id="mensagem-cartao" style="display: none;"></p>
-</section>
- <div id="confirmacao" style="display: none;">
+  </section>
+
+  <div id="confirmacao" style="display: none;">
     <p id="codigo-pedido"></p>
     <p id="mensagem-confirmacao"></p>
     <p id="agradecimento"></p>
     <button id="voltar-inicio" style="margin-top: 20px;">Voltar para a tela inicial</button>
   </div>
-  
+
+  <!-- Modal do Carrinho -->
+  <div id="carrinho-modal" style="display:none; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
+    <div style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative;">
+      <span id="fechar-carrinho" style="cursor:pointer; position:absolute; top:10px; right:14px; font-size:22px; font-weight:bold;">&times;</span>
+      <h2>Carrinho</h2>
+      <div id="resumo-carrinho"></div>
+      <!-- Botões movidos para dentro do modal -->
+      <div style="margin-top: 20px; text-align: center;">
+        <button id="finalizar-pedido" onclick="mostrarPagamento()" disabled style="margin-right: 15px; padding: 10px 20px; cursor: pointer;">Finalizar Pedido</button>
+        <button id="cancelar-pedido" onclick="cancelarPedido()" style="padding: 10px 20px; cursor: pointer;">Cancelar Pedido</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal do Carrinho -->
+<div id="carrinho-modal" style="display:none; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
+  <div style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; color: #2c3e50;">
+    <span id="fechar-carrinho" style="cursor:pointer; position:absolute; top:10px; right:14px; font-size:22px; font-weight:bold; color:#c20000;">&times;</span>
+    <h2 id="titulo-carrinho">Carrinho</h2>
+
+    <!-- Resumo do carrinho -->
+    <div id="resumo-carrinho"></div>
+
+    <!-- Botões do carrinho -->
+    <div id="botoes-carrinho" style="margin-top: 15px; text-align: center;">
+      <button id="finalizar-pedido-modal" style="background:#031b0d; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; margin-right:10px;">Finalizar Pedido</button>
+      <button id="cancelar-pedido-modal" style="background:#c0392b; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Cancelar Pedido</button>
+    </div>
+
+    <!-- Tela de pagamento dentro do modal (inicialmente escondida) -->
+    <div id="pagamento-modal" style="display:none; margin-top: 20px; text-align:center;">
+      <h3>Resumo do Pedido</h3>
+      <p><strong>Quantidade:</strong> <span id="resumo-tamanho-modal"></span></p>
+      <p><strong>Sabores:</strong> <span id="resumo-sabores-modal"></span></p>
+      <p><strong>Total:</strong> R$ <span id="resumo-total-modal"></span></p>
+
+      <h3>Escolha a forma de pagamento</h3>
+      <button id="btn-pagar-pix">Pagar com PIX</button>
+      <div id="pix-area-modal" style="margin-top: 15px;"></div>
+      <button id="btn-pagar-cartao" style="margin-top: 15px;">Pagar com Cartão</button>
+      <p id="mensagem-cartao-modal" style="margin-top: 15px; display:none; color:#27ae60; font-weight:bold;"></p>
+
+      <button id="voltar-carrinho" style="margin-top: 20px; background:#95a5a6; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Voltar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+
 
   <script src="js/pedido.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </body>
 </html>
-
