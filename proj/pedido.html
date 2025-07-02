@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pedido - 754 Pizzaria</title>
-  <link rel="stylesheet" href="pedido.css" />
+ <link rel="stylesheet" href="css/pedido.css">
 </head>
 <body>
   <header>
@@ -32,6 +32,8 @@
 
   <section id="tamanho-selecionado">
     <p><strong>Tamanho da Pizza:</strong> <span id="tamanho-pizza">Não definido</span></p>
+    <ul id="lista-pedidos"></ul>
+<p>Total: <span id="valor-total"></span></p>
     <p><strong>Preço Total:</strong> R$ <span id="preco-total">0,00</span></p>
   </section>
   <section id="tamanhos-pizza">
@@ -63,6 +65,6 @@
     </div>
   </div>
   
-  <script src="pedido.js"></script>
+<script src="js/pedido.js" defer></script>
 </body>
 </html>

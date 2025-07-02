@@ -129,4 +129,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCheckout() { /* ...código da resposta anterior... */ }
 
     initializeApp();
+
+const carrinho = [
+  { nome: "Pizza de Calabresa", preco: 30 },
+  { nome: "Pizza de Frango", preco: 35 }
+];
+
+localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+
+const CARinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+const lista = document.getElementById("lista-pedidos");
+const totalSpan = document.getElementById("valor-total");
+
+let total = 0;
+carrinho.forEach((item) => {
+  const li = document.createElement("li");
+  li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+  lista.appendChild(li);
+
+  total += item.preco;
+});
+
+totalSpan.textContent = `R$ ${total.toFixed(2)}`;
 });
