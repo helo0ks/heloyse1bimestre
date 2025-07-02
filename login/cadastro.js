@@ -19,13 +19,15 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ nome, email, senha }) // tipo removido
+      body: JSON.stringify({ nome, email, senha })
     });
 
     const dados = await resposta.json();
 
     if (resposta.ok && dados.success) {
-      window.location.href = "index.html"; // redireciona para login
+      // ERRO CORRIGIDO: O redirecionamento era para "index.html" (página de apresentação).
+      // Agora redireciona para "login.html" para que o usuário possa fazer o login.
+      window.location.href = "login.html";
     } else {
       mensagemElem.textContent = dados.message || "Erro ao cadastrar.";
       mensagemElem.style.display = "block";

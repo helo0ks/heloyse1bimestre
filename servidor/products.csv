@@ -1,0 +1,9 @@
+id,name,price,imageUrl
+1,Pizza de Atum,40.00,proj/img/atum.png
+2,Frango com Cheddar,42.00,proj/img/frangocomcheddar.png
+3,Pizza Portuguesa,44.00,proj/img/portuguesa.png
+4,Pizza Calabresa,40.00,proj/img/calabresa.png
+5,Calabresa Especial,45.00,proj/img/calabresaespecial.png
+6,Margueritta,43.00,proj/img/margueritta.png
+7,Estrogonoff de Carne,47.00,proj/img/strogonoff.png
+8,Frango com Catupiry,47.00,proj/img/frangocatupiry.png

@@ -4,177 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pedido - 754 Pizzaria</title>
-  <link rel="stylesheet" href="css/pedido.css" />
+  <link rel="stylesheet" href="pedido.css" />
 </head>
 <body>
   <header>
     <h1>Escolha seus sabores</h1>
     <h2>Selecione até 2 sabores para pizzas grandes ou médias, e até 1 para pizzas broto.</h2>
-
-    <!-- Botões fixos no topo direito (sem modificar o layout do header) -->
     <div style="position: fixed; top: 10px; right: 10px; z-index: 1001; display: flex; gap: 8px;">
+      <a href="../login/index.html" id="botao-login" class="login" style="font-size: 16px; padding: 6px 10px; display: none; color: white; text-decoration: none; border-radius: 6px;">Login</a>
+      <a href="../admin/index.html" id="botao-admin" class="login" style="font-size: 16px; padding: 6px 10px; display: none; color: white; text-decoration: none; border-radius: 6px;">Gerenciar</a>
       <button id="botao-carrinho" style="font-size: 16px; padding: 6px 10px; cursor: pointer;">🛒</button>
-      <button id="botao-logout" style="font-size: 16px; padding: 6px 10px; cursor: pointer;">Sair</button>
+      <button id="botao-logout" style="font-size: 16px; padding: 6px 10px; cursor: pointer; display: none;">Sair</button>
     </div>
   </header>
+  
+  <section id="manager-panel" style="display: none; background-color: #fff; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <h2>Painel do Gerente</h2>
+    <form id="product-form" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <input type="hidden" id="product-id">
+        <input type="text" id="product-name" placeholder="Nome do Produto" required style="flex: 1 1 200px; padding: 8px;">
+        <input type="number" id="product-price" placeholder="Preço (ex: 45.50)" step="0.01" required style="flex: 1 1 100px; padding: 8px;">
+        <input type="text" id="product-image" placeholder="URL da Imagem (ex: proj/img/nova.png)" required style="flex: 1 1 300px; padding: 8px;">
+        <button type="submit" style="padding: 8px 15px; background-color: #27ae60; color: white; border: none; cursor: pointer;">Salvar Produto</button>
+        <button type="button" id="cancel-edit-btn" style="padding: 8px 15px; background-color: #95a5a6; color: white; border: none; cursor: pointer; display: none;">Cancelar Edição</button>
+    </form>
+  </section>
 
   <section id="tamanho-selecionado">
     <p><strong>Tamanho da Pizza:</strong> <span id="tamanho-pizza">Não definido</span></p>
     <p><strong>Preço Total:</strong> R$ <span id="preco-total">0,00</span></p>
   </section>
-
   <section id="tamanhos-pizza">
     <button data-tamanho="grande">Pizza Grande</button>
     <button data-tamanho="media">Pizza Média</button>
     <button data-tamanho="broto">Pizza Broto</button>
   </section>
 
-  <section id="cards-container">
-    <div class="card">
-      <img src="img/atum.png" alt="Pizza de Atum" />
-      <div class="card-info">
-        <h3>Pizza de Atum</h3>
-        <p>Atum, cebola e azeitonas</p>
-        <button onclick="addToOrder('Atum')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/frangocomcheddar.png" alt="Frango com Cheddar" />
-      <div class="card-info">
-        <h3>Frango com Cheddar</h3>
-        <p>Frango desfiado, cheddar e azeitonas</p>
-        <button onclick="addToOrder('Frango com Cheddar')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/portuguesa.png" alt="Pizza Portuguesa" />
-      <div class="card-info">
-        <h3>Pizza Portuguesa</h3>
-        <p>Presunto, ovo, azeitonas e queijo</p>
-        <button onclick="addToOrder('Portuguesa')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/calabresa.png" alt="Pizza Calabresa" />
-      <div class="card-info">
-        <h3>Pizza Calabresa</h3>
-        <p>Calabresa, cebola e queijo</p>
-        <button onclick="addToOrder('Calabresa')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/calabresaespecial.png" alt="Pizza Calabresa Especial" />
-      <div class="card-info">
-        <h3>Calabresa Especial</h3>
-        <p>Calabresa, cebola, pimentão e queijo</p>
-        <button onclick="addToOrder('Calabresa Especial')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/margueritta.png" alt="Pizza Margueritta" />
-      <div class="card-info">
-        <h3>Margueritta</h3>
-        <p>Queijo, tomate e manjericão</p>
-        <button onclick="addToOrder('Margueritta')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/strogonoff.png" alt="Estrogonoff de Carne" />
-      <div class="card-info">
-        <h3>Estrogonoff de Carne</h3>
-        <p>Carne, molho cremoso e queijo</p>
-        <button onclick="addToOrder('Estrogonoff de Carne')">Adicionar</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/frangocatupiry.png" alt="Frango com Catupiry" />
-      <div class="card-info">
-        <h3>Frango com Catupiry</h3>
-        <p>Frango cremoso, queijo mussarela e catupiry</p>
-        <button onclick="addToOrder('Frango com Catupiry')">Adicionar</button>
-      </div>
-    </div>
-  </section>
+  <section id="cards-container"></section>
 
   <section>
     <h2>Sabores Selecionados</h2>
     <ul id="lista-sabores"></ul>
   </section>
   <section id="buttons">
-  <button id="adicionar-pizza" onclick="finalizePizza()" disabled>Adicionar Pizza ao Pedido</button>
-</section>
-
-
-  <!-- REMOVIDO: seção buttons original com os botões Finalizar Pedido e Cancelar Pedido -->
-
-  <section id="pagamento">
-    <h2>Resumo do Pedido</h2>
-    <p><strong>Quantidade:</strong> <span id="resumo-tamanho"></span></p>
-    <p><strong>Sabores:</strong> <span id="resumo-sabores"></span></p>
-    <p><strong>Total:</strong> R$ <span id="resumo-total"></span></p>
-
-    <h3>Escolha a forma de pagamento</h3>
-    <button onclick="gerarPix()">Pagar com PIX</button>
-    <div id="pix-area"></div>
-    <button onclick="pagarCartao()">Pagar com Cartão</button>
-    <p id="mensagem-cartao" style="display: none;"></p>
+    <button id="adicionar-pizza" onclick="finalizePizza()" disabled>Adicionar Pizza ao Pedido</button>
   </section>
 
-  <div id="confirmacao" style="display: none;">
-    <p id="codigo-pedido"></p>
-    <p id="mensagem-confirmacao"></p>
-    <p id="agradecimento"></p>
-    <button id="voltar-inicio" style="margin-top: 20px;">Voltar para a tela inicial</button>
-  </div>
-
-  <!-- Modal do Carrinho -->
-  <div id="carrinho-modal" style="display:none; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
-    <div style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative;">
-      <span id="fechar-carrinho" style="cursor:pointer; position:absolute; top:10px; right:14px; font-size:22px; font-weight:bold;">&times;</span>
-      <h2>Carrinho</h2>
-      <div id="resumo-carrinho"></div>
-      <!-- Botões movidos para dentro do modal -->
-      <div style="margin-top: 20px; text-align: center;">
-        <button id="finalizar-pedido" onclick="mostrarPagamento()" disabled style="margin-right: 15px; padding: 10px 20px; cursor: pointer;">Finalizar Pedido</button>
-        <button id="cancelar-pedido" onclick="cancelarPedido()" style="padding: 10px 20px; cursor: pointer;">Cancelar Pedido</button>
-      </div>
-    </div>
-  </div>
-  <!-- Modal do Carrinho -->
-<div id="carrinho-modal" style="display:none; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
-  <div style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; color: #2c3e50;">
-    <span id="fechar-carrinho" style="cursor:pointer; position:absolute; top:10px; right:14px; font-size:22px; font-weight:bold; color:#c20000;">&times;</span>
-    <h2 id="titulo-carrinho">Carrinho</h2>
-
-    <!-- Resumo do carrinho -->
-    <div id="resumo-carrinho"></div>
-
-    <!-- Botões do carrinho -->
-    <div id="botoes-carrinho" style="margin-top: 15px; text-align: center;">
-      <button id="finalizar-pedido-modal" style="background:#031b0d; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; margin-right:10px;">Finalizar Pedido</button>
-      <button id="cancelar-pedido-modal" style="background:#c0392b; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Cancelar Pedido</button>
-    </div>
-
-    <!-- Tela de pagamento dentro do modal (inicialmente escondida) -->
-    <div id="pagamento-modal" style="display:none; margin-top: 20px; text-align:center;">
-      <h3>Resumo do Pedido</h3>
-      <p><strong>Quantidade:</strong> <span id="resumo-tamanho-modal"></span></p>
-      <p><strong>Sabores:</strong> <span id="resumo-sabores-modal"></span></p>
-      <p><strong>Total:</strong> R$ <span id="resumo-total-modal"></span></p>
-
-      <h3>Escolha a forma de pagamento</h3>
-      <button id="btn-pagar-pix">Pagar com PIX</button>
-      <div id="pix-area-modal" style="margin-top: 15px;"></div>
-      <button id="btn-pagar-cartao" style="margin-top: 15px;">Pagar com Cartão</button>
-      <p id="mensagem-cartao-modal" style="margin-top: 15px; display:none; color:#27ae60; font-weight:bold;"></p>
-
-      <button id="voltar-carrinho" style="margin-top: 20px; background:#95a5a6; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Voltar ao Carrinho</button>
-    </div>
-  </div>
-</div>
-
-
-  <script src="js/pedido.js"></script>
+  <script src="pedido.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </body>
 </html>

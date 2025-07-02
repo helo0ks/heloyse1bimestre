@@ -161,3 +161,26 @@ body.menu-body {
   align-items: center;
   text-align: center;
 }
+/* No seu styles.css */
+
+body::before {
+  /* Comente ou apague estas linhas para remover a camada escura */
+  /*
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(25, 62, 40, 0.715); 
+  z-index: 0;
+  */
+}
+
+/* ... outras regras ... */
+
+.header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff; /* Garanta que a cor seja branca */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
