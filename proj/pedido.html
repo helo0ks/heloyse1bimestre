@@ -11,22 +11,22 @@
     <h1>Escolha seus sabores</h1>
     <h2>Selecione até 2 sabores para pizzas grandes ou médias, e até 1 para pizzas broto.</h2>
     <div style="position: fixed; top: 10px; right: 10px; z-index: 1001; display: flex; gap: 8px;">
-      <a href="../login/index.html" id="botao-login" class="login" style="font-size: 16px; padding: 6px 10px; display: none; color: white; text-decoration: none; border-radius: 6px;">Login</a>
-      <a href="../admin/index.html" id="botao-admin" class="login" style="font-size: 16px; padding: 6px 10px; display: none; color: white; text-decoration: none; border-radius: 6px;">Gerenciar</a>
-      <button id="botao-carrinho" style="font-size: 16px; padding: 6px 10px; cursor: pointer;">🛒</button>
-      <button id="botao-logout" style="font-size: 16px; padding: 6px 10px; cursor: pointer; display: none;">Sair</button>
+      <a href="/login/index.html" id="botao-login" class="login-button" style="display: none;">Login</a>
+      <a href="/admin/index.html" id="botao-admin" class="admin-button" style="display: none;">Gerenciar</a>
+      <button id="botao-carrinho">🛒</button>
+      <button id="botao-logout" style="display: none;">Sair</button>
     </div>
   </header>
   
-  <section id="manager-panel" style="display: none; background-color: #fff; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <section id="manager-panel" style="display: none;">
     <h2>Painel do Gerente</h2>
-    <form id="product-form" style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <form id="product-form">
         <input type="hidden" id="product-id">
-        <input type="text" id="product-name" placeholder="Nome do Produto" required style="flex: 1 1 200px; padding: 8px;">
-        <input type="number" id="product-price" placeholder="Preço (ex: 45.50)" step="0.01" required style="flex: 1 1 100px; padding: 8px;">
-        <input type="text" id="product-image" placeholder="URL da Imagem (ex: proj/img/nova.png)" required style="flex: 1 1 300px; padding: 8px;">
-        <button type="submit" style="padding: 8px 15px; background-color: #27ae60; color: white; border: none; cursor: pointer;">Salvar Produto</button>
-        <button type="button" id="cancel-edit-btn" style="padding: 8px 15px; background-color: #95a5a6; color: white; border: none; cursor: pointer; display: none;">Cancelar Edição</button>
+        <input type="text" id="product-name" placeholder="Nome do Produto" required>
+        <input type="number" id="product-price" placeholder="Preço" step="0.01" required>
+        <input type="text" id="product-image" placeholder="Caminho da Imagem (ex: proj/img/nova.png)" required>
+        <button type="submit">Salvar Produto</button>
+        <button type="button" id="cancel-edit-btn" style="display: none;">Cancelar Edição</button>
     </form>
   </section>
 
@@ -40,17 +40,29 @@
     <button data-tamanho="broto">Pizza Broto</button>
   </section>
 
-  <section id="cards-container"></section>
+  <section id="cards-container">
+      </section>
 
   <section>
     <h2>Sabores Selecionados</h2>
     <ul id="lista-sabores"></ul>
   </section>
   <section id="buttons">
-    <button id="adicionar-pizza" onclick="finalizePizza()" disabled>Adicionar Pizza ao Pedido</button>
+    <button id="adicionar-pizza" disabled>Adicionar Pizza ao Pedido</button>
   </section>
-
+  
+  <div id="carrinho-modal" style="display:none;">
+    <div>
+      <span id="fechar-carrinho">&times;</span>
+      <h2>Carrinho</h2>
+      <div id="resumo-carrinho"></div>
+      <div id="botoes-carrinho">
+        <button id="finalizar-pedido-modal">Finalizar Pedido</button>
+        <button id="cancelar-pedido-modal">Cancelar Pedido</button>
+      </div>
+    </div>
+  </div>
+  
   <script src="pedido.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </body>
 </html>
