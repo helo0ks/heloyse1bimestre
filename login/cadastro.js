@@ -27,7 +27,7 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
     if (resposta.ok && dados.success) {
       // ERRO CORRIGIDO: O redirecionamento era para "index.html" (página de apresentação).
       // Agora redireciona para "login.html" para que o usuário possa fazer o login.
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     } else {
       mensagemElem.textContent = dados.message || "Erro ao cadastrar.";
       mensagemElem.style.display = "block";
