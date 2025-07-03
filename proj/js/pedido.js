@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let precosPizza = {};
   let tamanhoSelecionado = null;
   let saboresSelecionados = [];
+  const carrinho = [];
+  let formaPagamento = null;
 
   // --- 2. FUNÇÃO PRINCIPAL DE INICIALIZAÇÃO ---
   async function initializeApp() {
@@ -72,7 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
       cardsContainer.innerHTML = '';
       precosPizza = {};
       products.forEach(p => {
-        precosPizza[p.name] = { broto: parseFloat(p.price) - 5, media: parseFloat(p.price) - 2, grande: parseFloat(p.price) };
+        precosPizza[p.name] = {
+          broto: parseFloat(p.price) - 5,
+          media: parseFloat(p.price) - 2,
+          grande: parseFloat(p.price)
+        };
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.productId = p.id;
@@ -103,10 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
       currentUser = null;
       window.location.reload();
     });
+
     cardsContainer.addEventListener('click', handleCardClick);
     productForm.addEventListener('submit', handleFormSubmit);
     cancelEditBtn.addEventListener('click', resetForm);
-    document.querySelectorAll('#tamanhos-pizza button').forEach(b => b.addEventListener('click', () => handleSizeSelection(b.dataset.tamanho)));
+    document.querySelectorAll('#tamanhos-pizza button').forEach(b =>
+      b.addEventListener('click', () => handleSizeSelection(b.dataset.tamanho))
+    );
     btnAdicionarPizza.addEventListener('click', finalizePizza);
     botaoCarrinho.addEventListener('click', openCartModal);
     fecharCarrinhoBtn.addEventListener('click', () => carrinhoModal.style.display = 'none');
@@ -114,15 +123,135 @@ document.addEventListener('DOMContentLoaded', () => {
     btnFinalizarPedidoModal.addEventListener('click', handleCheckout);
   }
 
-  // --- DEMAIS FUNÇÕES (coloque seu CRUD aqui se quiser) ---
-  function handleFormSubmit(e) { /* ... */ }
-  function handleCardClick(e) { /* ... */ }
-  function resetForm() { /* ... */ }
-  function handleSizeSelection(tamanho) { /* ... */ }
-  function finalizePizza() { /* ... */ }
-  function openCartModal() { /* ... */ }
-  function cancelarPedido() { /* ... */ }
-  function handleCheckout() { /* ... */ }
+  // --- 7. LÓGICA DE PEDIDO E CARRINHO ---
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    // CRUD do admin, não implementado aqui
+  }
 
+  function handleCardClick(e) {
+    const btn = e.target.closest('.add-to-cart-btn');
+    if (!btn) return;
+
+    if (!tamanhoSelecionado) {
+      alert('Escolha o tamanho da pizza antes de selecionar os sabores.');
+      return;
+    }
+
+    const sabor = btn.dataset.productName;
+    const limite = tamanhoSelecionado === 'broto' ? 1 : 2;
+
+    if (saboresSelecionados.includes(sabor)) {
+      saboresSelecionados = saboresSelecionados.filter(s => s !== sabor);
+    } else {
+      if (saboresSelecionados.length >= limite) {
+        alert(`Você só pode escolher até ${limite} sabores.`);
+        return;
+      }
+      saboresSelecionados.push(sabor);
+    }
+
+    atualizarSabores();
+  }
+
+  function handleSizeSelection(tamanho) {
+    tamanhoSelecionado = tamanho;
+    saboresSelecionados = [];
+    tamanhoPizzaSpan.textContent = tamanho.charAt(0).toUpperCase() + tamanho.slice(1);
+    precoTotalSpan.textContent = '0,00';
+    listaSaboresUl.innerHTML = '';
+    btnAdicionarPizza.disabled = true;
+  }
+
+  function atualizarSabores() {
+    listaSaboresUl.innerHTML = saboresSelecionados.map(s => `<li>${s}</li>`).join('');
+
+    if (saboresSelecionados.length === 0) {
+      precoTotalSpan.textContent = '0,00';
+      btnAdicionarPizza.disabled = true;
+      return;
+    }
+
+    let soma = saboresSelecionados.reduce((acc, sabor) => acc + (precosPizza[sabor]?.[tamanhoSelecionado] || 0), 0);
+    let precoFinal = soma;
+
+    precoTotalSpan.textContent = precoFinal.toFixed(2).replace('.', ',');
+    const limite = tamanhoSelecionado === 'broto' ? 1 : 2;
+    btnAdicionarPizza.disabled = saboresSelecionados.length !== limite;
+  }
+
+  function finalizePizza() {
+    let preco = precoTotalSpan.textContent.replace(',', '.');
+    carrinho.push({
+      tamanho: tamanhoSelecionado,
+      sabores: [...saboresSelecionados],
+      preco: parseFloat(preco)
+    });
+
+    alert('Pizza adicionada ao carrinho!');
+    saboresSelecionados = [];
+    tamanhoSelecionado = null;
+    tamanhoPizzaSpan.textContent = 'Não definido';
+    precoTotalSpan.textContent = '0,00';
+    listaSaboresUl.innerHTML = '';
+    btnAdicionarPizza.disabled = true;
+  }
+
+  function openCartModal() {
+    if (carrinho.length === 0) {
+      resumoCarrinhoDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    } else {
+      resumoCarrinhoDiv.innerHTML = carrinho.map((item, idx) => `
+        <div>
+          <h3>Pizza ${idx + 1} - ${item.tamanho}</h3>
+          <p>Sabores: ${item.sabores.join(', ')}</p>
+          <p>Preço: R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+        </div>
+      `).join('');
+    }
+
+    carrinhoModal.style.display = 'block';
+  }
+
+  function cancelarPedido() {
+    if (confirm("Tem certeza que deseja cancelar o pedido?")) {
+      carrinho.length = 0;
+      carrinhoModal.style.display = 'none';
+      alert("Pedido cancelado.");
+    }
+  }
+
+  function handleCheckout() {
+    if (carrinho.length === 0) {
+      alert("Seu carrinho está vazio.");
+      return;
+    }
+
+    const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked');
+    if (!pagamentoSelecionado) {
+      alert("Selecione uma forma de pagamento para finalizar o pedido.");
+      return;
+    }
+
+    formaPagamento = pagamentoSelecionado.value;
+
+    let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+    alert(`Pedido finalizado!\nTotal: R$ ${total.toFixed(2).replace('.', ',')}\nPagamento: ${formaPagamento}`);
+
+    carrinho.length = 0;
+    carrinhoModal.style.display = 'none';
+
+    document.querySelectorAll('input[name="pagamento"]').forEach(r => r.checked = false);
+  }
+
+  function resetForm() {
+    productIdInput.value = '';
+    productNameInput.value = '';
+    productPriceInput.value = '';
+    productImageInput.value = '';
+    cancelEditBtn.style.display = 'none';
+  }
+
+  // --- 8. INICIAR APP ---
   initializeApp();
 });
