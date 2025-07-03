@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resumoCarrinhoDiv = document.getElementById('resumo-carrinho');
     const btnFinalizarPedidoModal = document.getElementById('finalizar-pedido-modal');
     const btnCancelarPedidoModal = document.getElementById('cancelar-pedido-modal');
+    
+
 
     let currentUser = null;
     let precosPizza = {};
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Falha na resposta do servidor.');
             const products = await response.json();
             cardsContainer.innerHTML = '';
-            precosPizza = {};
+            precosPizza = {p.price};
             products.forEach(p => {
                 precosPizza[p.name] = { broto: parseFloat(p.price) - 5, media: parseFloat(p.price) - 2, grande: parseFloat(p.price) };
                 const card = document.createElement('div');
@@ -128,28 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function cancelarPedido() { /* ...código da resposta anterior... */ }
     function handleCheckout() { /* ...código da resposta anterior... */ }
 
+
     initializeApp();
 
-const carrinho = [
-  { nome: "Pizza de Calabresa", preco: 30 },
-  { nome: "Pizza de Frango", preco: 35 }
-];
-
-localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-
-const CARinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-const lista = document.getElementById("lista-pedidos");
-const totalSpan = document.getElementById("valor-total");
-
-let total = 0;
-carrinho.forEach((item) => {
-  const li = document.createElement("li");
-  li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
-  lista.appendChild(li);
-
-  total += item.preco;
-});
-
-totalSpan.textContent = `R$ ${total.toFixed(2)}`;
 });
